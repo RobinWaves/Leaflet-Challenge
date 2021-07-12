@@ -11,7 +11,20 @@ L.tileLayer("https://api.mapbox.com/styles/v1/mapbox/{id}/tiles/{z}/{x}/{y}?acce
   id: "light-v10",
   accessToken: API_KEY
 }).addTo(myMap);
-
+//--- This will be run when L.geoJSON creates the point layer from the GeoJSON data ---//
+function createCircleMarker(feature, latlng){
+  // Change the values of these options to change the symbol's appearance
+  let options = {
+    radius: feature.properties.mag * 5,
+    fillColor: "lightgreen", // ***** GO BACK TO THIS //
+    color: "black",
+    weight: 1,
+    opacity: 1,
+    fillOpacity: 0.8
+  }
+  return L.circleMarker(latlng, options);
+}
+//--- Called to select circle color ---//
 function getColor(depth) {
   switch (depth) {
     case depth <= 10:
@@ -31,33 +44,22 @@ function getColor(depth) {
   }
 }
 
-//--- This will be run when L.geoJSON creates the point layer from the GeoJSON data ---//
-function createCircleMarker(feature, latlng){
-  // Change the values of these options to change the symbol's appearance
-  let options = {
-    radius: feature.properties.mag * 5,
-    fillColor: getColor(feature),
-    color: "black",
-    weight: 1,
-    opacity: 1,
-    fillOpacity: 0.8
-  }
-  return L.circleMarker(latlng, options);
-}
-//--------------------------------------------------//
+
 // Store our API endpoint as queryUrl
 var queryUrl = "https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_week.geojson";
 
 // Perform a GET request to the query URL
 d3.json(queryUrl).then(function(data) {
-    
   console.log(data.features);
+  
   // Use Leaflet's geoJSON method to turn the data into a feature layer
   L.geoJSON(data.features, {
     // Call the function createCircleMarker - creates symbol for this layer
     pointToLayer: createCircleMarker,
+    // Inline function to create pop up layer
     onEachFeature: function(feature, layer) {
       layer.bindPopup("<h4>" + feature.properties.place + "</h4><hr><p>" 
-                      + new Date(feature.properties.time) + "</p>") }
+                      + new Date(feature.properties.time) + "</p>") } // ***** GO BACK TO THIS //
   }).addTo(myMap) 
+  
 });
