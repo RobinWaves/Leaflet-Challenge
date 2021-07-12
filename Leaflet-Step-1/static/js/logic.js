@@ -11,6 +11,7 @@ L.tileLayer("https://api.mapbox.com/styles/v1/mapbox/{id}/tiles/{z}/{x}/{y}?acce
   id: "light-v10",
   accessToken: API_KEY
 }).addTo(myMap);
+
 //--- This will be run when L.geoJSON creates the point layer from the GeoJSON data ---//
 function createCircleMarker(feature, latlng){
   // Change the values of these options to change the symbol's appearance
@@ -24,6 +25,7 @@ function createCircleMarker(feature, latlng){
   }
   return L.circleMarker(latlng, options);
 }
+
 //--- Called to select circle color ---//
 function getColor(depth) {
   switch (depth) {
@@ -44,7 +46,6 @@ function getColor(depth) {
   }
 }
 
-
 // Store our API endpoint as queryUrl
 var queryUrl = "https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_week.geojson";
 
@@ -61,5 +62,26 @@ d3.json(queryUrl).then(function(data) {
       layer.bindPopup("<h4>" + feature.properties.place + "</h4><hr><p>" 
                       + new Date(feature.properties.time) + "</p>") } // ***** GO BACK TO THIS //
   }).addTo(myMap) 
-  
+
+  // Set up the legend
+  var legend = L.control({ position: "bottomright" });
+
+  legend.onAdd = function() {
+    var div = L.DomUtil.create("div", "info legend");
+
+    var limits = ["-10-10", "10-30", "30-50", "50-70", "70-90", "90+"];
+    var colors = ["#97DC21", "#EB9605", "#FF4D4D", "#97DC21", "#EB9605", "#FF4D4D", "#000000"];
+    labels = [];
+
+    limits.forEach((limit, i) => {
+      labels.push("<li style=\"background-color: " + colors[i] + "\">" + limits[i] +"</li>");
+    });
+
+    div.innerHTML += "<ul>" + labels.join("") + "</ul>";
+    
+      return div;
+  };
+
+  // Adding legend to the map
+  legend.addTo(myMap);
 });
