@@ -14,14 +14,20 @@ L.tileLayer("https://api.mapbox.com/styles/v1/mapbox/{id}/tiles/{z}/{x}/{y}?acce
 
 function getColor(depth) {
   switch (depth) {
-    case depth <= 5:
-    return "#97DC21";
-  case depth > 5 && depth <= 10:
-    return "#EB9605";
-  case depth > 10:
-    return "#FF4D4D";
-  default:
-    return "#000000";
+    case depth <= 10:
+      return "#97DC21";
+    case depth > 10 && depth <= 30:
+      return "#EB9605";
+    case depth > 30 && depth <= 50:
+      return "#FF4D4D";
+    case depth > 50 && depth <= 70:
+      return "#97DC21";
+    case depth > 70 && depth <= 90:
+      return "#EB9605";
+    case depth > 90:
+      return "#FF4D4D";
+    default:
+      return "#000000";
   }
 }
 
@@ -30,7 +36,7 @@ function createCircleMarker(feature, latlng){
   // Change the values of these options to change the symbol's appearance
   let options = {
     radius: feature.properties.mag * 5,
-    fillColor: "lightgreen",
+    fillColor: getColor(feature),
     color: "black",
     weight: 1,
     opacity: 1,
@@ -44,9 +50,14 @@ var queryUrl = "https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_we
 
 // Perform a GET request to the query URL
 d3.json(queryUrl).then(function(data) {
+    
+  console.log(data.features);
   // Use Leaflet's geoJSON method to turn the data into a feature layer
   L.geoJSON(data.features, {
     // Call the function createCircleMarker - creates symbol for this layer
-    pointToLayer: createCircleMarker 
-  }).addTo( myMap )
+    pointToLayer: createCircleMarker,
+    onEachFeature: function(feature, layer) {
+      layer.bindPopup("<h4>" + feature.properties.place + "</h4><hr><p>" 
+                      + new Date(feature.properties.time) + "</p>") }
+  }).addTo(myMap) 
 });
