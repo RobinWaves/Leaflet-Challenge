@@ -59,8 +59,11 @@ d3.json(queryUrl).then(function(data) {
     pointToLayer: createCircleMarker,
     // Function to create pop up layer
     onEachFeature: function(feature, layer) {
-      layer.bindPopup("<h4>" + feature.properties.place + "</h4><hr><p>" 
-                      + new Date(feature.properties.time) + "</p><hr><p>" + feature.properties.mag) } // ***** GO BACK TO THIS //
+      layer.bindPopup("<h3>" + feature.properties.place + "</h3><p>" 
+                      + new Date(feature.properties.time) + "</p><p> Magnitude: " 
+                      + feature.properties.mag + "</p><p> Depth: " 
+                      + feature.geometry.coordinates[2] + "</p>")
+    }
   }).addTo(myMap) 
 
   // Set up the legend
