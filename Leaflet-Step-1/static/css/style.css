@@ -6,3 +6,24 @@ body {
 #map, body, html {
     height: 100%;
 }
+/* Legend Box */
+ul {
+    background-color: #FFFFFF;
+    padding: 10px;
+    border-radius: 5px;
+    list-style-type: none;
+    font-family: Verdana, sans-serif;
+    font-size: 12px;
+}
+/* Color Boxes Inside Legend Box */
+.color-box {
+    width: 20px;
+    height: 20px;
+    padding: none;
+    display: inline-block;
+    position: absolute;
+}
+/* Text Inside Legend Box */
+span {
+    padding-left: 30px;
+}

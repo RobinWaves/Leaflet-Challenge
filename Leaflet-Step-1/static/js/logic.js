@@ -12,12 +12,12 @@ L.tileLayer("https://api.mapbox.com/styles/v1/mapbox/{id}/tiles/{z}/{x}/{y}?acce
   accessToken: API_KEY
 }).addTo(myMap);
 
-//--- This will be run when L.geoJSON creates the point layer from the GeoJSON data ---//
+//--- Creates the circle layer from the GeoJSON data ---//
 function createCircleMarker(feature, latlng){
   // Change the values of these options to change the symbol's appearance
   let options = {
     radius: feature.properties.mag * 5,
-    fillColor: "lightgreen", // ***** GO BACK TO THIS //
+    fillColor: getColor(feature.geometry.coordinates[2]),
     color: "black",
     weight: 1,
     opacity: 1,
@@ -28,19 +28,19 @@ function createCircleMarker(feature, latlng){
 
 //--- Called to select circle color ---//
 function getColor(depth) {
-  switch (depth) {
-    case depth <= 10:
-      return "#97DC21";
-    case depth > 10 && depth <= 30:
-      return "#EB9605";
-    case depth > 30 && depth <= 50:
-      return "#FF4D4D";
-    case depth > 50 && depth <= 70:
-      return "#97DC21";
-    case depth > 70 && depth <= 90:
-      return "#EB9605";
-    case depth > 90:
-      return "#FF4D4D";
+  switch (true) {
+    case (depth <= 10):
+      return "#39FF14";
+    case (depth >= 10 && depth <= 30):
+      return "#DEFF00";
+    case (depth > 30 && depth <= 50):
+      return "#FCAE1E";
+    case (depth > 50 && depth <= 70):
+      return "#FF6700";
+    case (depth > 70 && depth <= 90):
+      return "#F89880";
+    case (depth > 90):
+      return "#FE019A";
     default:
       return "#000000";
   }
@@ -57,10 +57,10 @@ d3.json(queryUrl).then(function(data) {
   L.geoJSON(data.features, {
     // Call the function createCircleMarker - creates symbol for this layer
     pointToLayer: createCircleMarker,
-    // Inline function to create pop up layer
+    // Function to create pop up layer
     onEachFeature: function(feature, layer) {
       layer.bindPopup("<h4>" + feature.properties.place + "</h4><hr><p>" 
-                      + new Date(feature.properties.time) + "</p>") } // ***** GO BACK TO THIS //
+                      + new Date(feature.properties.time) + "</p><hr><p>" + feature.properties.mag) } // ***** GO BACK TO THIS //
   }).addTo(myMap) 
 
   // Set up the legend
@@ -70,15 +70,15 @@ d3.json(queryUrl).then(function(data) {
     var div = L.DomUtil.create("div", "info legend");
 
     var limits = ["-10-10", "10-30", "30-50", "50-70", "70-90", "90+"];
-    var colors = ["#97DC21", "#EB9605", "#FF4D4D", "#97DC21", "#EB9605", "#FF4D4D", "#000000"];
+    var colors = ["#39FF14", "#DEFF00", "#FCAE1E", "#FF6700", "#F89880", "#FE019A", "#000000"];
     labels = [];
 
-    limits.forEach((limit, i) => {
-      labels.push("<li style=\"background-color: " + colors[i] + "\">" + limits[i] +"</li>");
+    limits.forEach((limit, i) => {    
+      labels.push("<li><div class=\"color-box\" style=\"background-color: " 
+                  + colors[i] + "\"></div><span>" + limits[i] +"</span></li>");
     });
-
     div.innerHTML += "<ul>" + labels.join("") + "</ul>";
-    
+
       return div;
   };
 
