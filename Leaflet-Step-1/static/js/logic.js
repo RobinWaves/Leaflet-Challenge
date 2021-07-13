@@ -1,6 +1,6 @@
 // Create the map 
 var myMap = L.map('map', {
-  center: [39.8283 , -98.5795],
+  center: [39.8283, -98.5795],
   zoom: 5
 });
 
@@ -64,10 +64,10 @@ d3.json(queryUrl).then(function(data) {
     pointToLayer: createCircleMarker,
     // Function to create pop up layer
     onEachFeature: function(feature, layer) {
-      layer.bindPopup("<h3>" + feature.properties.place + "</h3><p>" 
-                      + new Date(feature.properties.time) + "</p><p> Magnitude: " 
-                      + feature.properties.mag + "</p><p> Depth: " 
-                      + feature.geometry.coordinates[2] + "</p>")
+      layer.bindPopup("<h3>" + feature.properties.place + "</h3><h4>" 
+                      + new Date(feature.properties.time) + "</h4><h4> Magnitude: " 
+                      + feature.properties.mag + "</h4><h4> Depth: " 
+                      + feature.geometry.coordinates[2] + "</h4>")
     }
   }).addTo(myMap) 
 
@@ -83,7 +83,7 @@ d3.json(queryUrl).then(function(data) {
 
     limits.forEach((limit, i) => {    
       labels.push("<li><div class=\"color-box\" style=\"background-color: " 
-                  + colors[i] + "\"></div><span>" + limits[i] +"</span></li>");
+                  + colors[i] + "\"></div><p>" + limits[i] +"</p></li>");
     });
     div.innerHTML += "<ul>" + labels.join("") + "</ul>";
 

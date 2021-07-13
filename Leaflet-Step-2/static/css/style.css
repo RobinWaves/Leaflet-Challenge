@@ -24,9 +24,11 @@ ul {
     position: absolute;
 }
 /* Text Inside Legend Box */
-span {
+p {
     padding-left: 30px;
+    margin: 0;
 }
+/* Pop Up - Place */
 .leaflet-popup-content h3 {
     font-family: Verdana, sans-serif;
     font-size: 15px; 
@@ -34,9 +36,11 @@ span {
     text-align: center;
     margin: 0px; 
 } 
-.leaflet-popup-content p {
+/* Pop Up - Date, Magnitude, and Depth */
+h4 {
     font-family: Verdana, sans-serif;
     font-size: 12px; 
-    margin: 5px; 
+    font-weight: normal;
+    margin-top: 5px;
+    margin-bottom: 5px;
 }
-
