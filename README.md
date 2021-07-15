@@ -28,17 +28,7 @@ The first task is visualizing an earthquake data set.  Find the dataset here: [U
 
 ![AdvancedMap](Leaflet-Step-2/images/Bonus-satellite.png)
 
-The second task plots a second data set to illustrate the relationship between tectonic plates and seismic activity.  Find the tectonic plate data set here: [Tectonic Plate Boundries](https://raw.githubusercontent.com/fraxen/tectonicplates/master/GeoJSON/PB2002_boundaries.json).
-
-You will need to pull in a second data set and visualize it along side your original set of data. Data on tectonic plates can be found at <https://github.com/fraxen/tectonicplates>.
-
-In this step we are going to..
-
-* Plot a second data set on our map.
-
-* Add a number of base maps to choose from as well as separate out our two different data sets into overlays that can be turned on and off independently.
-
-* Add layer controls to our map.
+The second task plots a second data set to illustrate the relationship between tectonic plates and seismic activity.  Find the tectonic plate data set here: [Tectonic Plate Boundries](https://raw.githubusercontent.com/fraxen/tectonicplates/master/GeoJSON/PB2002_boundaries.json).  This data is visualized along side the original set of data.  Three base maps are added for the user to choose from.  The two different data sets are seperated into overlys that can be selected independently or together.  Layer controls are then added to the map.  This map also includes a legend.
 
 * Leaflet-Step-2
    * images - image for html, and bonus screenshots (3)
