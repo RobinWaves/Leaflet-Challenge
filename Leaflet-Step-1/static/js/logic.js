@@ -16,7 +16,7 @@ L.tileLayer("https://api.mapbox.com/styles/v1/mapbox/{id}/tiles/{z}/{x}/{y}?acce
 function createCircleMarker(feature, latlng){
   // Change the values of these options to change the symbol's appearance
   let options = {
-    radius: getRadius(feature.properties.mag),
+    radius: getRadius(feature.properties.mag) ,
     fillColor: getColor(feature.geometry.coordinates[2]),
     color: "black",
     weight: 1,
@@ -28,7 +28,10 @@ function createCircleMarker(feature, latlng){
 
 // Gives each earthquake a different radius based on it's magnitude
 function getRadius(magnitude) {
-  return Math.sqrt(magnitude) * 8;
+  if (magnitude == 0) {
+    return 1;
+  }
+  return magnitude * 4;
 }
 
 //--- Called to select circle color ---//
