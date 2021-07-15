@@ -1,21 +1,22 @@
-# Leaflet-Challenge - Visualizing Data with Leaflet
+# Leaflet-Challenge: Visualizing Data with Leaflet
 
 ![USGS-Logo](Leaflet-Step-1/images/1-Logo.png)
 
 The United States Geological Survey is responsible for providing scientific data about natural hazards, the health of our ecosystems and environment; and the impacts of climate and land-use change. Their scientists develop new methods and tools to supply timely, relevant, and useful information about the Earth and its processes. 
 
-Using a new set of tools, this challenge seeks to visualze their data allowing them to better educate the public and other organizations (and hopefully secure more funding..) on issues facing our planet.  We visualize earthquake and tectonic data specifically focusing on a meaningful way to display it.
+Using a new set of tools, this challenge seeks to visualze their data allowing them to better educate the public and other organizations (and hopefully secure more funding...) on issues facing our planet.  We visualize earthquake and tectonic data specifically focusing on a meaningful way to display it.
 
 ### Level 1: Basic Visualization
 
 ![BasicMap](Leaflet-Step-1/images/Basic.png)
 
-The first task is visualizing an earthquake data set.  YOu can find the dataset here: [USGS GeoJSON Past 7 Days](https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_week.geojson).  Data is updated every five minutes.
+The first task is visualizing an earthquake data set.  Find the dataset here: [USGS GeoJSON Past 7 Days](https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_week.geojson).
+
 * Leaflet-Step-1
    * images - images for readme, html and basic screenshot
    * static
       * css
-         * style.css
+         * style.css - style html
       * js
          * config.js - contains public mapbox key
          * logic.js - main file to run for analysis
@@ -55,7 +56,7 @@ In this step we are going to..
    * images - image for html, and bonus screenshots (3)
    * static
       * css
-         * style.css
+         * style.css - style html
       * js
          * config.js - contains public mapbox key
          * logic.js - main file to run for analysis
