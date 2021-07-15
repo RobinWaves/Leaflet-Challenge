@@ -10,7 +10,7 @@ Using a new set of tools, this challenge seeks to visualze their data allowing t
 
 ![BasicMap](Leaflet-Step-1/images/Basic.png)
 
-The first task is visualizing an earthquake data set.  Find the dataset here: [USGS GeoJSON Past 7 Days](https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_week.geojson).  A map was created using Leaflet that plots all of the earthquakes in the previously mentioned data set based on their longitude and latitude.  Data markers reflect the magnitude of the earthquake by their size and the depth of the earthquake by color.  Earthquakes with higher magnitudes have a larger radius and earthquakes with greater depths are a darker color.  Popups when clicked provide additional information such as place, date, time, magnitude, and depth.  A legend is also provided showing the depth/color relations.
+The first task is visualizing an earthquake data set.  Find the dataset here: [USGS GeoJSON Past 7 Days](https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_week.geojson).  A map was created using Leaflet that plots all of the earthquakes in the previously mentioned data set based on their longitude and latitude.  Data markers reflect the magnitude of the earthquake by their size and the depth of the earthquake by color.  Earthquakes with higher magnitudes have a larger radius and earthquakes with greater depths are darker in color.  Popups are provided that when clicked give additional information such as place, date, time, magnitude, and depth.  A legend displays the colors used to represent the depth on the map.
 
 * Leaflet-Step-1
    * images - images for readme, html and basic screenshot
@@ -28,7 +28,9 @@ The first task is visualizing an earthquake data set.  Find the dataset here: [U
 
 ![AdvancedMap](Leaflet-Step-2/images/Bonus-satellite.png)
 
-The USGS wants you to plot a second data set on your map to illustrate the relationship between tectonic plates and seismic activity. You will need to pull in a second data set and visualize it along side your original set of data. Data on tectonic plates can be found at <https://github.com/fraxen/tectonicplates>.
+The second task plots a second data set to illustrate the relationship between tectonic plates and seismic activity.  Find the tectonic plate data set here: [Tectonic Plate Boundries](https://raw.githubusercontent.com/fraxen/tectonicplates/master/GeoJSON/PB2002_boundaries.json).
+
+You will need to pull in a second data set and visualize it along side your original set of data. Data on tectonic plates can be found at <https://github.com/fraxen/tectonicplates>.
 
 In this step we are going to..
 
