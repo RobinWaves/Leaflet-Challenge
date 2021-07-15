@@ -4,24 +4,22 @@
 
 The United States Geological Survey is responsible for providing scientific data about natural hazards, the health of our ecosystems and environment; and the impacts of climate and land-use change. Their scientists develop new methods and tools to supply timely, relevant, and useful information about the Earth and its processes. 
 
-The USGS is interested in building a new set of tools that will allow them visualize their earthquake data. They collect a massive amount of data from all over the world each day, but they lack a meaningful way of displaying it. Their hope is that being able to visualize their data will allow them to better educate the public and other government organizations (and hopefully secure more funding..) on issues facing our planet.
-
-html and javascript mail files to run for analysis.
-
+Using a new set of tools, this challenge seeks to visualze their data allowing them to better educate the public and other organizations (and hopefully secure more funding..) on issues facing our planet.  We visualize earthquake and tectonic data specifically focusing on a meaningful way to display it.
 
 ### Level 1: Basic Visualization
 
 ![BasicMap](Leaflet-Step-1/images/Basic.png)
 
-Your first task is to visualize an earthquake data set.
-
-1. **Get your data set**
-
-   ![3-Data](Leaflet-Step-1/Images/3-Data.png)
-
-   The USGS provides earthquake data in a number of different formats, updated every 5 minutes. Visit the [USGS GeoJSON Feed](http://earthquake.usgs.gov/earthquakes/feed/v1.0/geojson.php) page and pick a data set to visualize. When you click on a data set, for example 'All Earthquakes from the Past 7 Days', you will be given a JSON representation of that data. You will be using the URL of this JSON to pull in the data for our visualization.
-
-   ![4-JSON](Leaflet-Step-1/Images/4-JSON.png)
+The first task is visualizing an earthquake data set.  YOu can find the dataset here: [USGS GeoJSON Past 7 Days](https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_week.geojson).  Data is updated every five minutes.
+* Leaflet-Step-1
+   * images - images for readme, html and basic screenshot
+   * static
+      * css
+         * style.css
+      * js
+         * config.js - contains public mapbox key
+         * logic.js - main file to run for analysis
+   * index.html - main file to run for analysis
 
 2. **Import & Visualize the Data**
 
@@ -52,6 +50,16 @@ In this step we are going to..
 * Add a number of base maps to choose from as well as separate out our two different data sets into overlays that can be turned on and off independently.
 
 * Add layer controls to our map.
+
+* Leaflet-Step-2
+   * images - image for html, and bonus screenshots (3)
+   * static
+      * css
+         * style.css
+      * js
+         * config.js - contains public mapbox key
+         * logic.js - main file to run for analysis
+   * index.html - main file to run for analysis
 
 - - -
 
