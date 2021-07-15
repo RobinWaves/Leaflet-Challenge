@@ -10,18 +10,7 @@ Using a new set of tools, this challenge seeks to visualze their data allowing t
 
 ![BasicMap](Leaflet-Step-1/images/Basic.png)
 
-The first task is visualizing an earthquake data set.  Find the dataset here: [USGS GeoJSON Past 7 Days](https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_week.geojson).  Create a map using Leaflet that plots all of the earthquakes from your data set based on their longitude and latitude.
-
-   * Your data markers should reflect the magnitude of the earthquake by their size and and depth of the earth quake by color. Earthquakes with higher magnitudes should appear larger and earthquakes with greater depth should appear darker in color.
-
-   * **HINT** the depth of the earth can be found as the third coordinate for each earthquake.
-
-   * Include popups that provide additional information about the earthquake when a marker is clicked.
-
-   * Create a legend that will provide context for your map data.
-
-   * Your visualization should look something like the map above.
-
+The first task is visualizing an earthquake data set.  Find the dataset here: [USGS GeoJSON Past 7 Days](https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_week.geojson).  A map was created using Leaflet that plots all of the earthquakes in the previously mentioned data set based on their longitude and latitude.  Data markers reflect the magnitude of the earthquake by their size and the depth of the earthquake by color.  Earthquakes with higher magnitudes have a larger radius and earthquakes with greater depths are a darker color.  Popups when clicked provide additional information such as place, date, time, magnitude, and depth.  A legend is also provided showing the depth/color relations.
 
 * Leaflet-Step-1
    * images - images for readme, html and basic screenshot
@@ -37,7 +26,7 @@ The first task is visualizing an earthquake data set.  Find the dataset here: [U
 
 ### Level 2: More Data 
 
-![AdvancedMap](Leaflet-Step-1/images/Bonus-satellite.png)
+![AdvancedMap](Leaflet-Step-2/images/Bonus-satellite.png)
 
 The USGS wants you to plot a second data set on your map to illustrate the relationship between tectonic plates and seismic activity. You will need to pull in a second data set and visualize it along side your original set of data. Data on tectonic plates can be found at <https://github.com/fraxen/tectonicplates>.
 
@@ -58,27 +47,3 @@ In this step we are going to..
          * config.js - contains public mapbox key
          * logic.js - main file to run for analysis
    * index.html - main file to run for analysis
-
-- - -
-
-### Assessment
-
-Your final product will be assessed on the following metrics:
-
-* Completion of assigned tasks
-
-* Visual appearance
-
-* Professionalism
-
-* Ensure your repository has regular commits (i.e. 20+ commits) and a thorough README.md file
-
-**Good luck!**
-
-## Rubric
-
-[Unit 17 Rubric - Leaflet Homework - Visualizing Data with Leaflet](https://docs.google.com/document/d/1h1iH67V7UKOitS6K3nRrnOYbx-3KwEDC6ZWzpzDKxLc/edit?usp=sharing)
-
-- - -
-
-© 2021 Trilogy Education Services, LLC, a 2U, Inc. brand. Confidential and Proprietary. All Rights Reserved.
