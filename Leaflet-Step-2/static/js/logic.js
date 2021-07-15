@@ -47,9 +47,9 @@ L.control.layers(baseMaps, overlayMaps, {
   collapsed: false
 }).addTo(myMap);
 
-//--- Creates the circle layer from the GeoJSON data ---//
+// Creates the circle layer from the GeoJSON data
 function createCircleMarker(feature, latlng){
-  // Change the values of these options to change the symbol's appearance
+  // Change the circles appearance
   let options = {
     radius: getRadius(feature.properties.mag),
     fillColor: getColor(feature.geometry.coordinates[2]),
@@ -69,7 +69,7 @@ function getRadius(magnitude) {
   return magnitude * 4;
 }
 
-//--- Called to select circle color ---//
+// Gives each earthquake a different color based on depth
 function getColor(depth) {
   switch (true) {
     case (depth <= 10):
@@ -89,18 +89,18 @@ function getColor(depth) {
   }
 }
 
-// Store our API endpoint as queryUrl
-var queryUrl = "https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_week.geojson";
+// Store our API endpoint as earthquakeUrl
+var earthquakeUrl = "https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_week.geojson";
 
-// Perform a GET request to the query URL
-d3.json(queryUrl).then(function(data) {
+// Perform a GET request to the earthquake URL
+d3.json(earthquakeUrl).then(function(data) {
   console.log(data.features);
   
   // Use Leaflet's geoJSON method to turn the data into a feature layer
   L.geoJSON(data.features, {
     // Call the function createCircleMarker - creates symbol for this layer
     pointToLayer: createCircleMarker,
-    // Function to create pop up layer
+    // Create pop up layer
     onEachFeature: function(feature, layer) {
       layer.bindPopup("<h3>" + feature.properties.place + "</h3><h4>" 
                       + new Date(feature.properties.time) + "</h4><h4> Magnitude: " 
@@ -110,8 +110,9 @@ d3.json(queryUrl).then(function(data) {
   }).addTo(earthquakeMarkers); 
 })
 
+// Store our API endpoint as tectonicUrl
 var tectonicUrl = "https://raw.githubusercontent.com/fraxen/tectonicplates/master/GeoJSON/PB2002_boundaries.json";
-// Perform a GET request to the query URL
+// Perform a GET request to the tectonic URL
 d3.json(tectonicUrl).then(function(data) {
   console.log(data.features);
   
@@ -126,7 +127,6 @@ d3.json(tectonicUrl).then(function(data) {
     }
   }).addTo(tectonicMarkers);
 });
-
 
 // Set up the legend
 var legend = L.control({ position: "bottomright" });

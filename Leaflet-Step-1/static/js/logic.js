@@ -12,9 +12,9 @@ L.tileLayer("https://api.mapbox.com/styles/v1/mapbox/{id}/tiles/{z}/{x}/{y}?acce
   accessToken: API_KEY
 }).addTo(myMap);
 
-//--- Creates the circle layer from the GeoJSON data ---//
+// Creates the circle layer from the GeoJSON data 
 function createCircleMarker(feature, latlng){
-  // Change the values of these options to change the symbol's appearance
+  // Change the circles appearance
   let options = {
     radius: getRadius(feature.properties.mag) ,
     fillColor: getColor(feature.geometry.coordinates[2]),
@@ -34,7 +34,7 @@ function getRadius(magnitude) {
   return magnitude * 4;
 }
 
-//--- Called to select circle color ---//
+// Gives each earthquake a different color based on depth
 function getColor(depth) {
   switch (true) {
     case (depth <= 10):
@@ -65,7 +65,7 @@ d3.json(queryUrl).then(function(data) {
   L.geoJSON(data.features, {
     // Call the function createCircleMarker - creates symbol for this layer
     pointToLayer: createCircleMarker,
-    // Function to create pop up layer
+    // Create pop up layer
     onEachFeature: function(feature, layer) {
       layer.bindPopup("<h3>" + feature.properties.place + "</h3><h4>" 
                       + new Date(feature.properties.time) + "</h4><h4> Magnitude: " 
